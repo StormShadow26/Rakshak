@@ -4,6 +4,10 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const hotspotRoutes = require("./routes/hotspotRoutes");
+const aiDoctorRoutes = require("./routes/aiDoctorRoutes");
+const userRoutes = require("./routes/user.routes.js");
+
+
 const connectWithDb = require("./config/database");
 
 
@@ -21,6 +25,8 @@ app.use("/uploads", express.static("uploads"));
 app.use(express.json());
 app.use(cookieParser());
 app.use("/api", hotspotRoutes);
+app.use("/api/ai", aiDoctorRoutes);
+app.use("/api/users", userRoutes);
 
 // Start the server
 app.listen(PORT, () => {
